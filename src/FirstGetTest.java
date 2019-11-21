@@ -1,3 +1,4 @@
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import io.restassured.RestAssured;
 import io.restassured.http.Method;
@@ -20,6 +21,10 @@ public class FirstGetTest {
 		
 		String responseBody=response.getBody().asString();
 		System.out.println("The response is:  "+responseBody);
+		
+		int statusCode=response.getStatusCode();
+		
+		Assert.assertEquals(statusCode /*actual value*/, 200 /*expected value*/, "Correct status code returned");
 		
 	}
 }
